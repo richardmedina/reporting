@@ -11,7 +11,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Badge from 'react-bootstrap/Badge';
-
+import Breadcrumb from 'react-bootstrap/Breadcrumb'
+import CloseButton from 'react-bootstrap/CloseButton';
+import Card from 'react-bootstrap/Card';
 
 
 const expand='lg';
@@ -22,6 +24,7 @@ const Layout  = () => (
     <Container fluid>
       <Navbar.Brand href="#">Reporting</Navbar.Brand>
       <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+      
       <Navbar.Offcanvas
         id={`offcanvasNavbar-expand-${expand}`}
         aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
@@ -41,7 +44,7 @@ const Layout  = () => (
               </span>
             </Nav.Link>
             <Nav.Link href="#action2">
-              <i class="fa-solid fa-envelope"></i>
+              <i className="fa-solid fa-envelope"></i>
               <span style={{ fontSize: '12px', lineHeight: '12px', verticalAlign: 'top'}}>
                 <Badge bg="primary">99+</Badge>
               </span>
@@ -60,7 +63,7 @@ const Layout  = () => (
 
           <Nav>
           <NavDropdown
-              title={<i class="fa-solid fa-user"></i>}
+              title={<i className="fa-solid fa-user"></i>}
               id={`offcanvasNavbarDropdown-expand-${expand}`}
               //className='dropdown-menu dropdown-menu-end'
             >
@@ -81,10 +84,18 @@ const Layout  = () => (
 
   <Container fluid style={{ position: 'absolute', top: '50px', bottom: '5px'}}>
     <Row>
-      <Col xs={2} style={{ border: 'solid 1px #ddd', background: '#333', height: '100vh'}}>
-        <Nav.Link>Activities</Nav.Link>
+      <Col 
+        xs={2} 
+        style={{ 
+          borderRight: 'solid 1px #ddd', 
+          //background: '#333', 
+          resize: 'horizontal',
+          height: '100vh'
+        }}
+      >
+        <Nav.Link>Reports</Nav.Link>
 
-        <Nav defaultActiveKey="/home" className="flex-column" style={{ paddingLeft: '10px'}}>
+        <Nav bg='dark' defaultActiveKey="/home" className="flex-column" style={{ paddingLeft: '10px'}}>
           <Nav.Link href="/home">Templates</Nav.Link>
           <Nav.Link eventKey="link-1">Reports</Nav.Link>
           <Nav.Link eventKey="link-2">Share</Nav.Link>
@@ -93,8 +104,60 @@ const Layout  = () => (
           </Nav.Link>
         </Nav>
       </Col>
-      <Col>
+      <Col style={{ paddingTop: '20px'}}>
+        <Card>
+          <Card.Header>
+            <Row>
+              <Col>
+                <Breadcrumb>
+                  <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+                  <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+                    Reports
+                  </Breadcrumb.Item>
+                  <Breadcrumb.Item
+                    active
+                  >
+                    Data
+                  </Breadcrumb.Item>
+                </Breadcrumb>
+              </Col>
+              <Col xs={1} style={{ textAlign: 'right'}}>
+                <CloseButton />
+              </Col>
+            </Row>
+          </Card.Header>
+          <Card.Body>
+            <Card.Title>Special title treatment</Card.Title>
+            <Card.Text>
+              With supporting text below as a natural lead-in to additional content.
+            </Card.Text>
+            <Button variant="primary">Go somewhere</Button>
+          </Card.Body>
+        </Card>
+        {/* <Container fluid>
+          
+          <Row>
+            <Col style={{ border: 'solid 1px red'}}>
+              <Breadcrumb className='align-middle'>
+                <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+                <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+                  Reports
+                </Breadcrumb.Item>
+                <Breadcrumb.Item
+                  active
+                >
+                  Data
+                </Breadcrumb.Item>
+              </Breadcrumb>
+            </Col>
+            <Col>
+            <CloseButton className='float-right' />
+            </Col>
+          </Row>
+        
         Work Area
+      </Container> */ }
+      
       </Col>
     </Row>
   </Container>
