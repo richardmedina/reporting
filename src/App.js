@@ -1,9 +1,14 @@
-import HomeContainer from './containers/home/home-container.component';
+import AppRoutes from './AppRoutes';
+
+import { BrowserRouter } from 'react-router-dom';
+
 
 function App() {
   return (
    <div>
-     <HomeContainer />
+      <BrowserRouter>
+        <AppRoutes />
+     </BrowserRouter>
    </div>
   );
 }
